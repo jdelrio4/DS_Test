@@ -1,0 +1,22 @@
+tasks:
+- name: regresion_beta
+  class_name: Henry::Task::CucumberTask
+  options:  
+     tags: 
+     - mid
+     expand: true
+  reports: 
+  - format: html 
+    name: ${DATE}_${TASK_NAME}.html
+
+tasks:
+- name: quotamedia
+  class_name: Henry::Task::CucumberTask
+  options:  
+     tags: 
+     - quotamedia
+     expand: true
+  reports: 
+  - format: html 
+    name: ${DATE}_${TASK_NAME}.html
+
