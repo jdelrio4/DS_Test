@@ -8,9 +8,9 @@ end
 def validar_media
 	#valida que no se este llegando al limite disponible en media
 
-	 if @service.nil? or @service.empty? or @service.include? "Error"
-		puts "Hubo un error en la consulta de la quota de media".on_red
-		resultado=false
+  if @service.nil? or @service.empty? or @service.include? "Error"
+	puts "Hubo un error en la consulta de la quota de media".on_red
+	resultado=false
   end
 
   total = @service['data']['total']

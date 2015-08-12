@@ -1,22 +1,21 @@
+
 tasks:
-- name: regresion_beta
+- name: pam_failed_bookings
   class_name: Henry::Task::CucumberTask
   options:  
      tags: 
-     - mid
+     - pam_failed_bookings
      expand: true
   reports: 
   - format: html 
     name: ${DATE}_${TASK_NAME}.html
 
-tasks:
-- name: quotamedia
+- name: quota_media
   class_name: Henry::Task::CucumberTask
   options:  
      tags: 
-     - quotamedia
+     - quota_media
      expand: true
   reports: 
   - format: html 
     name: ${DATE}_${TASK_NAME}.html
-

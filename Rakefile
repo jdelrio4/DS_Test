@@ -10,3 +10,7 @@ parametros = "features --format pretty --format html --out"
 Cucumber::Rake::Task.new(:quotamedia) do |task|
   task.cucumber_opts = ["#{parametros} log/quotamedia#{t}.html --tags @quotamedia"] 
 end
+
+Cucumber::Rake::Task.new(:PAMFailedBookings) do |task|
+  task.cucumber_opts = ["#{parametros} log/PAMFailedBookings#{t}.html --tags @PAMFailedBookings"] 
+end
