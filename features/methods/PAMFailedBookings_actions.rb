@@ -29,6 +29,8 @@ def checkear_respuesta
 
 		puts "Hay #{items.size} reserva(s) fallidas en PAM"
 
+		puts items
+
 		resultado = false
 
 	else
