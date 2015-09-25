@@ -3,6 +3,7 @@
 Característica: Consultar el servicio de bookings fallidos de PAM para ver si existe alguno y generar una alarma para alertar de la situación.
 
   Escenario: Invocar el servicio de bookings fallidos de PAM validadndo que existan o no entradas.[90m # features/PAMFailedBookings.feature:7[0m
+<<<<<<< HEAD
     [31mDado que invoco al servicio de bookings fallidos de PAM[90m                                        # features/step_definitions/PAMFailedBookings_steps.rb:3[0m[0m
 [31m      No route to host - connect(2) for "10.2.7.16" port 80 (Errno::EHOSTUNREACH)[0m
 [31m      ./features/methods/PAMFailedBookings_actions.rb:6:in `pam_failed_bookings'[0m
@@ -16,3 +17,12 @@ Característica: Consultar el servicio de bookings fallidos de PAM para ver si e
 1 scenario ([31m1 failed[0m)
 2 steps ([31m1 failed[0m, [36m1 skipped[0m)
 0m1.041s
+=======
+    [32mDado que invoco al servicio de bookings fallidos de PAM[90m                                        # features/step_definitions/PAMFailedBookings_steps.rb:3[0m[0m
+    [32mEntonces checkeo si hay bookings fallidos[90m                                                      # features/step_definitions/PAMFailedBookings_steps.rb:7[0m[0m
+      [36mNo hay reservas fallidas en PAM[0m
+
+1 scenario ([32m1 passed[0m)
+2 steps ([32m2 passed[0m)
+0m0.322s
+>>>>>>> 45cd5739ee220a060f58cac52efde83b5fa49f10
