@@ -4,11 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |gem|
   gem.name          = "ds_test"
-<<<<<<< HEAD
-  gem.version       = "0.0.4"
-=======
-  gem.version       = "0.0.5"
->>>>>>> 45cd5739ee220a060f58cac52efde83b5fa49f10
+  gem.version       = "0.0.6"
   gem.authors       = ["DS QA"]
   gem.email         = ["jdelrio@despegar.com,smendoza@despegar.com"]
   gem.description   = %q{Test de Media}
@@ -26,7 +22,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rake"
   gem.add_development_dependency "bundler"
 
-   
+
+
   gem.add_runtime_dependency 'hpricot'
   gem.add_runtime_dependency 'watir-webdriver'
   gem.add_runtime_dependency 'httparty'
