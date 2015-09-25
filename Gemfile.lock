@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ds_test (0.0.4)
+    ds_test (0.0.6)
       henry-container
       hpricot
       httparty
