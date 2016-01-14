@@ -7,5 +7,3 @@ Dado(/^que invoco al servicio de bookings fallidos de PAM$/) do
 Entonces(/^checkeo si hay bookings fallidos$/) do
   checkear_respuesta.should be_truthy
 end
-
-

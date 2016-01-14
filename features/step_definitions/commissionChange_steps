@@ -1,0 +1,9 @@
+# -*- encoding : utf-8 -*-
+#language: es
+Dado(/^que invoco al servicio de consulta de comisiones especiales$/) do
+  commission_change
+ end
+
+Entonces(/^checkeo si cambiaron los coeficientes de las comisiones$/) do
+  checkear_respuesta.should be_truthy
+end
