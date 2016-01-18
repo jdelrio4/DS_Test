@@ -1,7 +1,7 @@
-def quotamedia
+def quota_media
 	#consulta el estado de la quota de media
 	
-	@service = HTTParty.get("http://backoffice.despegar.com/media/quotas/DS")
+	@service = HTTParty.get("http://64.76.243.167/media/quotas/DS")
 end
 
 

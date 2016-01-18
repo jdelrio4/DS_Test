@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 #language: es
 Dado(/^que invoco al servicio de quota de media$/) do
-  quotamedia
+  quota_media
 end
 
 Entonces(/^verifico el estado de la quota$/) do

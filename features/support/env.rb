@@ -13,7 +13,20 @@ require 'open-uri'
 require 'byebug'
 require 'minitest'
 require 'rake'
+require 'mail'
 
+mail_options = { 
+			:address              => "smtp.gmail.com",
+            :port                 => 587,
+            :domain               => 'gmail.com',
+            :user_name            => 'ds.test.alert@gmail.com',
+            :password             => 'dstestalert',
+            :authentication       => 'plain',
+            :enable_starttls_auto => true  }
+
+Mail.defaults do
+  delivery_method :smtp, mail_options
+end
 
 begin
   HENRY_PARAMS = Henry::Environment.params
@@ -26,6 +39,8 @@ begin
 rescue
   $ENV = "rc"
 end
+
+
 
 #if (HENRY_PARAMS['env'].nil?)
 #  @navegador = [:firefox, :chrome].sample

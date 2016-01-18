@@ -1,7 +1,11 @@
 PATH
   remote: .
   specs:
+<<<<<<< HEAD
+    ds_test (0.0.5)
+=======
     ds_test (0.0.6)
+>>>>>>> 52774100463d3c5af0007f9c1cf30ddcb90ad1dc
       henry-container
       hpricot
       httparty
@@ -59,8 +63,6 @@ GEM
       multi_xml (>= 0.5.2)
     httpclient (2.6.0.1)
     json (1.8.3)
-    mail (2.6.3)
-      mime-types (>= 1.16, < 3)
     mime-types (2.6.1)
     minitest (5.7.0)
     minitest-reporters (1.0.19)
@@ -131,7 +133,6 @@ DEPENDENCIES
   hpricot
   httpclient
   json
-  mail
   minitest
   rake
   rest-client

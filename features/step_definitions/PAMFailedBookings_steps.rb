@@ -5,5 +5,9 @@ Dado(/^que invoco al servicio de bookings fallidos de PAM$/) do
  end
 
 Entonces(/^checkeo si hay bookings fallidos$/) do
-  checkear_respuesta.should be_truthy
+  resultado = checkear_respuesta
+  ##resultado.should be_truthy
+  if !resultado
+  	enviar_alerta
+  end
 end

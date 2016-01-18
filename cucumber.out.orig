@@ -1,0 +1,31 @@
+#language: es
+[36m@quota_media[0m
+Característica: Verificar la mediante servicio la quota de media, de este modo poder realizar una alarma cuando se llegue al límite
+
+<<<<<<< HEAD
+  Escenario: Invocar el servicio de bookings fallidos de PAM validadndo que existan o no entradas.[90m # features/PAMFailedBookings.feature:7[0m
+    [32mDado que invoco al servicio de bookings fallidos de PAM[90m                                        # features/step_definitions/PAMFailedBookings_steps.rb:3[0m[0m
+    [31mEntonces checkeo si hay bookings fallidos[90m                                                      # features/step_definitions/PAMFailedBookings_steps.rb:7[0m[0m
+      [36mHay 1 reserva(s) fallidas en PAM[0m
+      [36m[98236393][0m
+[31m      expected: truthy value[0m
+[31m           got: false (RSpec::Expectations::ExpectationNotMetError)[0m
+[31m      ./features/step_definitions/PAMFailedBookings_steps.rb:8:in `/^checkeo si hay bookings fallidos$/'[0m
+[31m      features/PAMFailedBookings.feature:11:in `Entonces checkeo si hay bookings fallidos'[0m
+
+[31mFailing Scenarios:[0m
+[31mcucumber features/PAMFailedBookings.feature:7[0m[90m # Escenario: Invocar el servicio de bookings fallidos de PAM validadndo que existan o no entradas.[0m
+
+1 scenario ([31m1 failed[0m)
+2 steps ([31m1 failed[0m, [32m1 passed[0m)
+0m0.482s
+=======
+  Escenario: Invocar el servicio de quota media validando que el valor de used sea inferior al de total.[90m # features/quotamedia.feature:7[0m
+    [32mDado que invoco al servicio de quota de media[90m                                                        # features/step_definitions/servicios_steps.rb:3[0m[0m
+    [32mEntonces verifico el estado de la quota[90m                                                              # features/step_definitions/servicios_steps.rb:7[0m[0m
+      [36mTodo bien[0m
+
+1 scenario ([32m1 passed[0m)
+2 steps ([32m2 passed[0m)
+0m0.315s
+>>>>>>> 52774100463d3c5af0007f9c1cf30ddcb90ad1dc

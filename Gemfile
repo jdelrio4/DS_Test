@@ -14,5 +14,6 @@ gem 'cucumber'
 gem 'byebug'
 gem 'bundler'
 gem 'henry-container'
+gem 'mail'
 
 gemspec
