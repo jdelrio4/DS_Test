@@ -4,7 +4,7 @@
 	
 	Característica: Consultar el servicio de bookings fallidos de PAM para ver si existe alguno y generar una alarma para alertar de la situación.
 
-	Escenario: Invocar el servicio de bookings fallidos de PAM validadndo que existan o no entradas.
+	Escenario: Invocar el servicio de bookings fallidos de PAM validando que existan o no entradas.
 
 
 	Dado que invoco al servicio de bookings fallidos de PAM

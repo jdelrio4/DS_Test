@@ -59,7 +59,7 @@ def enviar_alerta
 
 	if semaphore['data']['statusHolder']['status']['status'] == 'ERROR' 
 
-		if last_items.length == @items.to_s[/\[(.*?)\]/, 1 ].length
+		if last_items.length < @items.to_s[/\[(.*?)\]/, 1 ].length
 
 			body_template = '<br><h2># Servicio de alerta de bookings fallidos de DS-PAM #</h2><br><b>Existen nuevas reservas fallidas / pendientes de emisión:</b><br><ul>'
 
