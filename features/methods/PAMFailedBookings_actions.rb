@@ -10,9 +10,11 @@ end
 def checkear_respuesta
 	# Checkea la respuesta del servicio para ver si hay o no bookings fallidos
 
+	@contenido
+
 	if @service.nil? or @service.empty? or @service.include? "Error"
 		puts "Hubo un error al consultar el servicio de Bookings Fallidos de PAM".on_red
-		resultado=false
+		resultado = false
 	end
 
 	items = []
@@ -41,6 +43,7 @@ def checkear_respuesta
 
 	end
 
+	resultado
 
 end
 
@@ -72,7 +75,7 @@ def enviar_alerta
 
 			mail = Mail.new do
 				from 'ds.test.alert@gmail.com'
-				to 'smendoza@despegar.com'
+				to 'smendoza@despegar.com, ds-pam@despegar.com'
 				subject 'Nuevas reservas fallidas de DS-PAM'
 
 				html_part do
@@ -82,10 +85,8 @@ def enviar_alerta
 			end
 
 			mail.deliver!
-
 		end
 	end
-
 	false
-
 end
+

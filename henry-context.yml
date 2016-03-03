@@ -20,12 +20,12 @@ tasks:
   - format: html 
     name: ${DATE}_${TASK_NAME}.html
 
-- name: commission_change
+- name: rm_bundle_status
   class_name: Henry::Task::CucumberTask
   options:  
      tags: 
-     - commission_change
+     - rm_bundle_status
      expand: true
   reports: 
-  - format: html 
+  - format: html
     name: ${DATE}_${TASK_NAME}.html

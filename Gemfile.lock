@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ds_test (0.0.6)
+    ds_test (0.1.0)
       henry-container
       hpricot
       httparty
@@ -17,7 +17,7 @@ GEM
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
-    childprocess (0.5.6)
+    childprocess (0.5.7)
       ffi (~> 1.0, >= 1.0.11)
     colorize (0.7.7)
     columnize (0.9.0)
@@ -97,7 +97,7 @@ GEM
     rspec-support (3.3.0)
     ruby-progressbar (1.7.5)
     rubyzip (1.1.7)
-    selenium-webdriver (2.46.2)
+    selenium-webdriver (2.48.1)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
@@ -114,7 +114,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
-    watir-webdriver (0.8.0)
+    watir-webdriver (0.9.1)
       selenium-webdriver (>= 2.46.2)
     websocket (1.2.2)
 
