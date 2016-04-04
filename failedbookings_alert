@@ -1,5 +1,0 @@
-<br><h1># Servicio de alerta de bookings fallidos de DS-PAM #</h1><br><br>
-
-Existen nuevas reservas fallidas pendientes de emisión:<br>
-
- 			    #{@items}

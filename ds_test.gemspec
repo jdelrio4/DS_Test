@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |gem|
   gem.name          = "ds_test"
-  gem.version       = "0.1.1"
+  gem.version       = "0.2.0"
   gem.authors       = ["DS QA"]
   gem.email         = ["jdelrio@despegar.com,smendoza@despegar.com"]
   gem.description   = %q{Test de Media}

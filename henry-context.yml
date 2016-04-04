@@ -29,3 +29,13 @@ tasks:
   reports: 
   - format: html
     name: ${DATE}_${TASK_NAME}.html
+
+- name: rm_group_records_costs_order
+  class_name: Henry::Task::CucumberTask
+  options:  
+     tags: 
+     - rm_group_records_costs_order
+     expand: true
+  reports: 
+  - format: html
+    name: ${DATE}_${TASK_NAME}.html

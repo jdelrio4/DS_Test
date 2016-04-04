@@ -3,9 +3,8 @@ def rm_bundle_list
 	# PROD: 10.2.7.16
 	# RC: 10.254.168.100
 
-	@bundles = HTTParty.get("http://10.2.7.16/ds-rm/service/bundles/")
+	@bundles = HTTParty.get("http://10.2.7.16/ds-rm/service/bundles", :headers =>{'X-UOW' => 'GUIDO-BOT'})
 end
-
 
 
 def checkear_bundles
@@ -24,19 +23,23 @@ def checkear_bundles
 
 			check['items'].each do | availability |
 
-				tracking_id = availability['trackingId']
+				tracking_id = availability['trackingId'].gsub ' ', '%20'
+
 				i = 0
 				for i in 0..1 do
 
-					record = HTTParty.get("http://10.2.7.16/ds-rm/service/provider-records?tracking_id=#{tracking_id}")
+					record = HTTParty.get("http://10.2.7.16/ds-rm/service/provider-records?tracking_id=#{tracking_id}", :headers =>{'X-UOW' => 'GUIDO-BOT'})
 
 					if record.nil? or record.empty? or record.include? 'errors'
 
 						i = i + 1
 						if i == 2
+							
+							rambo_ref = '<A HREF="http://backoffice.despegar.com/ds-rambo/#!/bundle/edition/' + check['oid'] + '">Editar en RAMBO</A><br><br>'
+
 							bundle_title = check['title']['es']
 							bundle_oid = check['oid']
-							bundle_info << bundle_title + ' | oid: ' + bundle_oid
+							bundle_info << bundle_title + ' | oid: ' + bundle_oid + '<br>' + rambo_ref
 						end
 					else
 						i = 2
@@ -77,7 +80,7 @@ def alerta_bundles
 
 			mail = Mail.new do
 				from 'ds.test.alert@gmail.com'
-				to 'ds-shopping@despegar.com, dssales-product@despegar.com, nicolas.sacheri@despegar.com, santiago.iribarne@despegar.com'
+				to  'smendoza@despegar.com, ds-shopping@despegar.com, dssales-product@despegar.com, nicolas.sacheri@despegar.com, santiago.iribarne@despegar.com'
 				subject '[Alerta] Bundles con items sin disponibilidad - DS Automation'
 
 				html_part do
@@ -87,5 +90,4 @@ def alerta_bundles
 			end
 
 	mail.deliver!
-
 end

@@ -3,7 +3,7 @@ def pam_failed_bookings
 	# PROD: 10.2.7.16
 	# RC: 10.254.168.100
 
-	@service = HTTParty.get("http://10.2.7.16/ds-pam/service/failedBooking/findAll")
+	@service = HTTParty.get("http://10.2.7.16/ds-pam/service/failedBooking/findAll", :headers =>{'X-UOW' => 'GUIDO-BOT'})
 end
 
 
@@ -24,7 +24,6 @@ def checkear_respuesta
 		@service['data'].each do | item |
 
 			items << item['crmId']
-
 		end
 
 		items = items.uniq
@@ -36,16 +35,16 @@ def checkear_respuesta
 		@items = items
 
 		resultado = false
-
 	else
 
-		puts 'No hay reservas fallidas en PAM'
+		resultado = true
 
+		puts 'No hay reservas fallidas en PAM'
 	end
 
 	resultado
-
 end
+
 
 def enviar_alerta
 	#Envia un email de alerta cuando se registran nuevos bookings fallidos
@@ -58,7 +57,7 @@ def enviar_alerta
 	last_execution = execution['data']['runs'][run_id]['executionInstanceId']
 	result = HTTParty.get("http://henry.despegar.com/api/results/#{last_execution}")
 
-	last_items = result['data'][0]['result']['tasks'][0][0]['returnedData']['output'][/\[(.*?)\]/, 1 ]
+	last_items = result['data'][0]['result']['tasks'][0][0]['returnedData']['output'][/\[(.*?)\]/, 1]
 
 	if semaphore['data']['statusHolder']['status']['status'] == 'ERROR' 
 
@@ -75,7 +74,7 @@ def enviar_alerta
 
 			mail = Mail.new do
 				from 'ds.test.alert@gmail.com'
-				to 'smendoza@despegar.com, ds-pam@despegar.com'
+				to 'smendoza@despegar.com'
 				subject 'Nuevas reservas fallidas de DS-PAM'
 
 				html_part do
@@ -89,4 +88,3 @@ def enviar_alerta
 	end
 	false
 end
-

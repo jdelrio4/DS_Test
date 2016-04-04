@@ -1,12 +1,7 @@
 #language: es
-[36m@rm_bundle_status[0m
-Característica: Consultar el servicio de listado de Bundles de RM para ver si esta activo y checkear la disponibilidad de los items que los componen.
+[36m@rm_group_records_costs_order[0m
+Característica: Consultar el servicio de Grupos de Fichas de RM para ver si existe alguno que tenga orden automático, contenga al menos una actividad de PAM y que la actividad ganadora segun los costos sea de un proveedor distinto de PAM.
 
-  Escenario: Invocar el servicio de listado de Bundles de RM validando que existan bundles y tengan disponibilidad real.[90m # features/RMBundleStatus.feature:7[0m
-    [32mDado que invoco al servicio de listado de Bundles de RM[90m                                                              # features/step_definitions/RMbundleStatus.rb:3[0m[0m
-    [32mEntonces checkeo si cada item que los compone tiene disponibilidad[90m                                                   # features/step_definitions/RMbundleStatus.rb:7[0m[0m
-      [36mTodos los bundles cargados tienen disponibilidad.[0m
-
-1 scenario ([32m1 passed[0m)
-2 steps ([32m2 passed[0m)
-0m51.061s
+  Escenario: Invocar el servicio de grupos de fichas de RM y reportar aquellos grupos con orden automático que contengan actividades de PAM que no ganen la competencia de costos.[90m # features/RMgroupRecordsCostsOrder.feature:7[0m
+    [32mDado que invoco al servicio de Grupos de Fichas de RM[90m                                                                                                                          # features/step_definitions/RMgroupRecordsCostsOrder.rb:3[0m[0m
+      [36mHay 782 grupos para la consulta[0m
