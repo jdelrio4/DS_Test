@@ -2,8 +2,8 @@ def rm_bundle_list
 	# Consulta el servicio de RM que devuelve el listado de Bundles y los items que los componen.
 	# PROD: 10.2.7.16
 	# RC: 10.254.168.100
-
-	@bundles = HTTParty.get("http://10.2.7.16/ds-rm/service/bundles", :headers =>{'X-UOW' => 'GUIDO-BOT'})
+	@ip = '10.2.7.16'
+	@bundles = HTTParty.get("http://#{@ip}/ds-rm/service/bundles", :headers =>{'X-UOW' => 'GUIDO-BOT'})
 end
 
 
@@ -16,6 +16,7 @@ def checkear_bundles
 	end
 
 	bundle_info = []
+	to_print = []
 
 	if !@bundles.empty?
 
@@ -28,7 +29,7 @@ def checkear_bundles
 				i = 0
 				for i in 0..1 do
 
-					record = HTTParty.get("http://10.2.7.16/ds-rm/service/provider-records?tracking_id=#{tracking_id}", :headers =>{'X-UOW' => 'GUIDO-BOT'})
+					record = HTTParty.get("http://#{@ip}/ds-rm/service/provider-records?tracking_id=#{tracking_id}", :headers =>{'X-UOW' => 'GUIDO-BOT'})
 
 					if record.nil? or record.empty? or record.include? 'errors'
 
@@ -40,6 +41,7 @@ def checkear_bundles
 							bundle_title = check['title']['es']
 							bundle_oid = check['oid']
 							bundle_info << bundle_title + ' | oid: ' + bundle_oid + '<br>' + rambo_ref
+							to_print << bundle_title + ' | oid: ' + bundle_oid
 						end
 					else
 						i = 2
@@ -52,7 +54,8 @@ def checkear_bundles
 	if !bundle_info.empty?
 
 		@output = bundle_info.uniq
-		puts @output
+		to_print = to_print.uniq
+		puts to_print
 		false
 	else
 

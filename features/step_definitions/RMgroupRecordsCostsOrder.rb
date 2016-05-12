@@ -6,8 +6,7 @@ end
 
 Entonces(/^checkeo aquellos grupos con orden Automatico que contengan actividades de PAM y en la competencia de costos gane alguna otra actividad de otro proveedor$/) do
 
-	if checkear_orden == true
+	if checkear_orden
 		alerta_group_records
 	end
-
 end

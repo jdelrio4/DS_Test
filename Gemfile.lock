@@ -1,12 +1,14 @@
 PATH
   remote: .
   specs:
-    ds_test (0.1.1)
+    ds_test (0.2.5)
       henry-container
       hpricot
       httparty
       httpclient
+      mail
       rest-client
+      tiny_tds
       watir-webdriver
 
 GEM
@@ -62,6 +64,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.6.1)
+    mini_portile (0.6.2)
     minitest (5.7.0)
     minitest-reporters (1.0.19)
       ansi
@@ -110,6 +113,8 @@ GEM
     timeout (0.0.1)
       timeout-extensions
     timeout-extensions (0.0.0)
+    tiny_tds (0.7.0)
+      mini_portile (= 0.6.2)
     trollop (2.1.2)
     unf (0.1.4)
       unf_ext

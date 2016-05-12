@@ -5,7 +5,12 @@ Dado(/^que invoco al servicio de bookings fallidos de PAM$/) do
 end
 
 Entonces(/^checkeo si hay bookings fallidos$/) do
-	if !checkear_respuesta
-  	enviar_alerta
+
+	resultado = checkear_respuesta
+
+	if !resultado
+  		enviar_alerta
 	end
+
+	expect(resultado).to be_truthy
 end

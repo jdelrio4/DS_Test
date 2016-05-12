@@ -5,5 +5,5 @@ Dado(/^que invoco al servicio de quota de media$/) do
 end
 
 Entonces(/^verifico el estado de la quota$/) do
-	validar_media.should be_truthy
+	expect(validar_media).to be_truthy
 end

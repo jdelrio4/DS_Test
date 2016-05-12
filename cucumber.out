@@ -4,4 +4,10 @@ Característica: Consultar el servicio de Grupos de Fichas de RM para ver si exi
 
   Escenario: Invocar el servicio de grupos de fichas de RM y reportar aquellos grupos con orden automático que contengan actividades de PAM que no ganen la competencia de costos.[90m # features/RMgroupRecordsCostsOrder.feature:7[0m
     [32mDado que invoco al servicio de Grupos de Fichas de RM[90m                                                                                                                          # features/step_definitions/RMgroupRecordsCostsOrder.rb:3[0m[0m
-      [36mHay 782 grupos para la consulta[0m
+      [36mHay 4 grupos para la consulta[0m
+    [32mEntonces checkeo aquellos grupos con orden Automatico que contengan actividades de PAM y en la competencia de costos gane alguna otra actividad de otro proveedor[90m              # features/step_definitions/RMgroupRecordsCostsOrder.rb:7[0m[0m
+      [36m[0;39;41mHay 2 grupos de fichas donde no gana una actividad de PAM.[0m[0m
+
+1 scenario ([32m1 passed[0m)
+2 steps ([32m2 passed[0m)
+0m33.466s

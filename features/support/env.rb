@@ -14,6 +14,7 @@ require 'byebug'
 require 'minitest'
 require 'rake'
 require 'mail'
+require 'tiny_tds'
 
 mail_options = { 
 			:address              => "smtp.gmail.com",
