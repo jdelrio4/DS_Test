@@ -1,6 +1,6 @@
 
 source "https://rubygems.org"
-source "http://gems.despegar.com/"
+#source "http://gems.despegar.com/"
 
 
 gem 'rake'
@@ -15,5 +15,9 @@ gem 'byebug'
 gem 'bundler'
 gem 'henry-container'
 gem 'mail'
+gem 'selenium-webdriver'
+gem 'watir-webdriver'
+gem 'watir-scroll'
+
 
 gemspec

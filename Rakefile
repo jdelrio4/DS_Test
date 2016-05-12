@@ -18,3 +18,7 @@ end
 Cucumber::Rake::Task.new(:RMBundleStatus) do |task|
   task.cucumber_opts = ["#{parametros} log/RMBundleStatus#{t}.html --tags @rm_bundle_status"]
 end
+
+Cucumber::Rake::Task.new(:RMupdategrupoficha) do |task|
+  task.cucumber_opts = ["#{parametros} log/RMupdategrupoficha#{t}.html --tags @update_grupoficha"]
+end
