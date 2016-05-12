@@ -14,6 +14,9 @@ require 'byebug'
 require 'minitest'
 require 'rake'
 require 'mail'
+require 'selenium-webdriver'
+require 'watir-webdriver'
+require 'watir-scroll'
 
 mail_options = { 
 			:address              => "smtp.gmail.com",
@@ -40,6 +43,15 @@ rescue
   $ENV = "rc"
 end
 
+@navegador = [:chrome].sample
+client = Selenium::WebDriver::Remote::Http::Default.new
+client.timeout = 360
+BROWSER = Watir::Browser.new @navegador, :http_client => client
+BROWSER.cookies.clear
+BROWSER.window.maximize
+at_exit do
+  BROWSER.close
+end
 
 
 #if (HENRY_PARAMS['env'].nil?)
