@@ -7,8 +7,8 @@ Gem::Specification.new do |gem|
   gem.version       = "0.2.5"
   gem.authors       = ["DS QA"]
   gem.email         = ["jdelrio@despegar.com,smendoza@despegar.com"]
-  gem.description   = %q{Test de Media}
-  gem.summary       = %q{Tests automatizados}
+  gem.description   = %q{DS Automation}
+  gem.summary       = %q{Tests de DS}
   
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

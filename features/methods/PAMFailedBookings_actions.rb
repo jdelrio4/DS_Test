@@ -87,16 +87,7 @@ def checkear_respuesta
 		puts 'No hay reservas fallidas en PAM'
 	end
 
-	#if !@done_items.empty?
-
-		client = TinyTds::Client.new(:username => 'ds-pam_app', :password => 'pam852595', :host => 'mysqlha06', :port => '64260', :tds_version => '0.95')
-		#@done_items.each do | crm_id |
-
-		debugger
-
-			client.execute("DELETE FROM `ds-pam`.failed_booking WHERE crm_id = 127779208;")
-		#end
-
+	
 	resultado
 end
 
