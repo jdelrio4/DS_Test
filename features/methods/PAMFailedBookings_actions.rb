@@ -41,6 +41,8 @@ def checkear_respuesta
 
 			fenix_stat = HTTParty.get("http://#{@ip}/fenix/ds/#{service_type}?transaction_id=#{item['crmId']}", :headers =>{'X-UOW' => 'GUIDO-BOT'})
 
+debugger
+
 			if fenix_stat['items'][0]['home_status']['code'].to_s == 'DONE'
 
 				@done_items << item['crmId'].to_s + ' (Emitida)'
@@ -114,7 +116,7 @@ def nuevos_bookings
 
 			mail = Mail.new do
 				from 'ds.test.alert@gmail.com'
-				to 'ds-pam@despegar.com, nmelano@despegar.com, reservastkts@despegar.com, ddileo@despegar.com'
+				to 'ds-pam@despegar.com' #, nmelano@despegar.com, reservastkts@despegar.com, ddileo@despegar.com'
 				subject '[Alerta] Reservas fallidas en DS-PAM - DS Automation'
 
 				html_part do
@@ -134,7 +136,7 @@ def enviar_alerta
 
 	run_id = (execution['data']['runs'].to_a.size - 1)
 
-	last_execution = execution['data']['runs'][run_id]['executionInstanceId']
+	last_execution = execution['data']['runs']['run_id']['executionInstanceId']
 	result = HTTParty.get("http://backend-cross.despexds.net/henry-prod-service/results/#{last_execution}")
 
 	last_items = result['data'][0]['result']['tasks'][0][0]['returnedData']['output'][/\[(.*?)\]/, 1]

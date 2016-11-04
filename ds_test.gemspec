@@ -31,5 +31,4 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'henry-container'
   gem.add_runtime_dependency 'rest-client'
   gem.add_runtime_dependency 'mail'
- 
 end

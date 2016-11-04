@@ -1,9 +1,10 @@
 def rm_group_records
-	# Consulta el servicio de Bookings Fallidos de PAMFailedBookings
+	# Consulta el servicio de grupos de fichas de RM
+
 	# PROD: 10.2.7.16
 	# RC: 10.254.168.100
-	@ip = '10.254.168.100'
-	@service = HTTParty.get("http://#{@ip}/ds-rm/service/group-records", :headers =>{'X-UOW' => 'GUIDO-BOT'})
+	@ip = '10.2.7.16'
+	@service = HTTParty.get("http://#{@ip}/ds-rm/service/group-records",:headers =>{'X-UOW' => 'GUIDO-BOT'})
 
 	if @service.nil? or @service.empty? or @service.include? "Error"
 		puts "Hubo un error al consultar el servicio de Grupos de Fichas de RM".on_red
@@ -16,7 +17,7 @@ def rm_group_records
 end
 
 def checkear_orden
-	# Checkea la respuesta del servicio para ver si hay grupos con orden automático que contengan atividades de PAM donde las mismas no ganen el primer orden por Costos.
+	# Checkea la respuesta del servicio para ver si hay grupos con orden automático que contengan atividades de HB donde las mismas no ganen el primer orden por Costos.
 
 	resultado = true
 
@@ -29,9 +30,9 @@ def checkear_orden
 
 			gname = group['name']
 			costs = []
-			pam_costs = []
+			hb_costs = []
 
-			if group['trackingIds'].to_s.include?("PAM") && !group['useOrder']
+			if group['trackingIds'].to_s.include?("HB") && !group['useOrder']
 
 				group['trackingIds'].each do | id |
 
@@ -54,13 +55,19 @@ def checkear_orden
 
 						record['modalities'].each do | x |
 
-							if id.include? "PAM" 
+							if id.include? "HB" 
 
-								pam_costs << x['adultCost'] * 1.05
+								hb_costs << x['adultCost'] 
 
 							else
+								if id.include? "PAM" 
+
+								costs << x['adultCost'] * 1.05
+
+								else
 
 								costs << x['adultCost']
+								end
 							end
 						end
 					end
@@ -70,14 +77,14 @@ def checkear_orden
 
 				rambo_ref = '<A HREF="http://backoffice.despegar.com/ds-rambo/#!/group-records/edit/' + group['oid'] + '">Editar en RAMBO</A><br><br>'
 
-				if pam_costs.nil?
+				if hb_costs.nil?
 
-						@report << group['name'] + '<br>OID: ' + group['oid'] + '<br>Destino: ' + group['destination'] + '<br>Tracking IDs:' + group['trackingIds'] + '(Actividad/es de PAM sin disponibilidad)'
+						@report << group['name'] + '<br>OID: ' + group['oid'] + '<br>Destino: ' + group['destination'] + '<br>Tracking IDs:' + group['trackingIds'] + '(Actividad/es de HB sin disponibilidad)'
 				end
 
-				if !pam_costs.min.nil? && !costs.min.nil? 
+				if !hb_costs.min.nil? && !costs.min.nil? 
 
-					if pam_costs.min > costs.min
+					if hb_costs.min > costs.min
 
 						@report << group['name'].to_s + '<br>OID: ' + group['oid'] + '<br>Destino: ' + group['destination'] + '<br>Tracking IDs:' + group['trackingIds'].to_s + '<br>' + rambo_ref
 					end
@@ -95,19 +102,19 @@ def checkear_orden
 
 	@report_size = @report.size.to_s
 
-	puts "Hay #{@report_size} grupos de fichas donde no gana una actividad de PAM.".on_red
+	puts "Hay #{@report_size} grupos de fichas donde no gana una actividad de HB.".on_red
 end
 
 
 
 def alerta_group_records
 
-#Genera y envía un e-mail de alerta listando los grupos de fichas con orden automático que tengan al menos una actividad de PAM pero el ganador con mejor costo sea de otro proveedor.
+#Genera y envía un e-mail de alerta listando los grupos de fichas con orden automático que tengan al menos una actividad de HB pero el ganador con mejor costo sea de otro proveedor.
 
-	body_template = "<br><h1># Servicio de alerta de Grupos de Fichas para mejora de costos PAM: #</h1><br><b>
+	body_template = "<br><h1># Servicio de alerta de Grupos de Fichas para mejora de costos HB: #</h1><br><b>
 	* Fueron consultados #{@groups_size} Grupos de Fichas.<br>
 	* Aplicaron a este reporte: #{@report_size} Grupos de Fichas.</b><br><br>
-	Los siguientes Grupos de Fichas contienen actividades de PAM que pierden competencia de costos con actividades de otro proveedor:<ul>"
+	Los siguientes Grupos de Fichas contienen actividades de HB que pierden competencia de costos con actividades de otro proveedor:<ul>"
 
 	@report.each do | item |
 		body_template = body_template + '<li>' + item.to_s + '</li>'
@@ -122,8 +129,8 @@ def alerta_group_records
 
 	mail = Mail.new do
 		from 'ds.test.alert@gmail.com'
-		to 'smendoza@despegar.com' #'santiago.iribarne@despegar.com, nicolas.sacheri@despegar.com, ds-pam@despegar.com, nmelano@despegar.com, pscoglio@despegar.com, asaffer@despegar.com, rramires@despegar.com, mviera@despegar.com, vrico@despegar.com'
-		subject '[Alerta] Grupos de Fichas con actividades PAM sin mejor costo - DS Automation'
+		to 'smendoza@despegar.com, , nicolas.sacheri@despegar.com' # ds-pam@despegar.com, nmelano@despegar.com, pscoglio@despegar.com, asaffer@despegar.com, rramires@despegar.com, mviera@despegar.com, vrico@despegar.com, santiago.iribarne@despegar.com'
+		subject '[Alerta] Grupos de Fichas con actividades HB sin mejor costo - DS Automation'
 
 		html_part do
 			content_type 'text/html; charset=UTF-8'

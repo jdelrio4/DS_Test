@@ -83,7 +83,8 @@ def alerta_bundles
 
 			mail = Mail.new do
 				from 'ds.test.alert@gmail.com'
-				to  'smendoza@despegar.com, ds-shopping@despegar.com, dssales-product@despegar.com, nicolas.sacheri@despegar.com, santiago.iribarne@despegar.com'
+				#to  'smendoza@despegar.com, ds-shopping@despegar.com, dssales-product@despegar.com, nicolas.sacheri@despegar.com, santiago.iribarne@despegar.com'
+			    to  'sochoa@despegar.com, nicolas.sacheri@despegar.com'
 				subject '[Alerta] Bundles con items sin disponibilidad - DS Automation'
 
 				html_part do
